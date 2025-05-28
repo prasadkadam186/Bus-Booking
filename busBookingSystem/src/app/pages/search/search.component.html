@@ -1,0 +1,60 @@
+<div class="container py-4">
+  <h2 class="text-center fw-bold">Bus Booking System</h2>
+
+  <!-- Search Box -->
+  <div class="search-box d-flex justify-content-between align-items-center flex-wrap gap-3">
+    <select class="form-select w-25" name="fromLocationId" [(ngModel)]="searchObj.fromLocationId">
+      <option value="">Select city</option>
+      @for (item of location$ | async ; track $index) {
+        <option name="fromLocationId" [value]="item.locationId">{{item.locationName}}</option>
+      }
+    </select>
+    <select class="form-select w-25" name="toLocationId" [(ngModel)]="searchObj.toLocationId">
+      <option value="">Select city</option>
+      @for (item of location$ | async ; track $index) {
+        <option [value]="item.locationId">{{item.locationName}}</option>
+      }
+    </select>
+    <input type="date" name="travelDate" class="form-control w-25" [(ngModel)]="searchObj.travelDate" [value]="searchObj.travelDate" placeholder="YYYY-MM-DD" />
+    <button class="btn" (click)="searchBus()">SEARCH BUSES</button>
+  </div>
+
+  <!-- Bus List -->
+  <div class="mt-4">
+    <h4>Available Buses</h4>
+    <div class="bus-card">
+      <div class="row align-items-center">
+        <div class="col-md-3">
+          <h5 class="fw-bold mb-0">IntrCity SmartBus</h5>
+          <small class="text-muted">A/C Sleeper (2+1)</small>
+        </div>
+        <div class="col-md-1 text-center">
+          <strong>19:00</strong><br />
+          <small class="text-muted">Departure</small>
+        </div>
+        <div class="col-md-2 text-center">
+          <strong>13h 55m</strong><br />
+          <small class="text-muted">Duration</small>
+        </div>
+        <div class="col-md-1 text-center">
+          <strong>08:55</strong><br />
+          <small class="text-muted">Arrival</small>
+        </div>
+        <div class="col-md-2 text-center">
+          <strong>4.5 <i class="fa fa-star"></i></strong><br />
+          <small class="text-muted">567 Ratings</small>
+        </div>
+        <div class="col-md-1 text-center">
+          <strong>INR 935</strong><br />
+          <small class="text-muted">8 Seats<br />available</small>
+        </div>
+        <div class="col-md-2 text-end">
+          <button class="btn">VIEW SEATS</button>
+        </div>
+      </div>
+      <div class="text-end mt-2 text-danger">
+        <small>18-Aug</small>
+      </div>
+    </div>
+  </div>
+</div>
