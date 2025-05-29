@@ -5,13 +5,13 @@
   <div class="search-box d-flex justify-content-between align-items-center flex-wrap gap-3">
     <select class="form-select w-25" name="fromLocationId" [(ngModel)]="searchObj.fromLocationId">
       <option value="">Select city</option>
-      @for (item of location$ | async ; track $index) {
+      @for (item of location  ; track $index) {
         <option name="fromLocationId" [value]="item.locationId">{{item.locationName}}</option>
       }
     </select>
     <select class="form-select w-25" name="toLocationId" [(ngModel)]="searchObj.toLocationId">
       <option value="">Select city</option>
-      @for (item of location$ | async ; track $index) {
+      @for (item of location ; track $index) {
         <option [value]="item.locationId">{{item.locationName}}</option>
       }
     </select>
@@ -22,14 +22,23 @@
   <!-- Bus List -->
   <div class="mt-4">
     <h4>Available Buses</h4>
+    @if(this.spinnerLoader)
+    {
+      <div class="d-flex justify-content-center">
+        <div class="spinner-border" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+      </div>
+    }
+    @for (item of buslist; track $index) {
     <div class="bus-card">
       <div class="row align-items-center">
         <div class="col-md-3">
-          <h5 class="fw-bold mb-0">IntrCity SmartBus</h5>
+          <h5 class="fw-bold mb-0">{{item.busName}}</h5>
           <small class="text-muted">A/C Sleeper (2+1)</small>
         </div>
         <div class="col-md-1 text-center">
-          <strong>19:00</strong><br />
+          <strong>{{item.departureTime}}</strong><br />
           <small class="text-muted">Departure</small>
         </div>
         <div class="col-md-2 text-center">
@@ -37,7 +46,7 @@
           <small class="text-muted">Duration</small>
         </div>
         <div class="col-md-1 text-center">
-          <strong>08:55</strong><br />
+          <strong>{{item.arrivalTime}}</strong><br />
           <small class="text-muted">Arrival</small>
         </div>
         <div class="col-md-2 text-center">
@@ -45,8 +54,8 @@
           <small class="text-muted">567 Ratings</small>
         </div>
         <div class="col-md-1 text-center">
-          <strong>INR 935</strong><br />
-          <small class="text-muted">8 Seats<br />available</small>
+          <strong>INR {{item.price}}</strong><br />
+          <small class="text-muted">{{item.availableSeats}} Seats<br />available</small>
         </div>
         <div class="col-md-2 text-end">
           <button class="btn">VIEW SEATS</button>
@@ -56,5 +65,6 @@
         <small>18-Aug</small>
       </div>
     </div>
+    }
   </div>
 </div>
