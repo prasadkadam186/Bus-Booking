@@ -1,3 +1,4 @@
+<app-navbar></app-navbar>
 <div class="container py-4">
   <h2 class="text-center fw-bold">Bus Booking System</h2>
 
@@ -38,7 +39,7 @@
           <small class="text-muted">A/C Sleeper (2+1)</small>
         </div>
         <div class="col-md-1 text-center">
-          <strong>{{item.departureTime}}</strong><br />
+          <strong>{{item.departureTime | date : 'HH:MM::SS'}}</strong><br />
           <small class="text-muted">Departure</small>
         </div>
         <div class="col-md-2 text-center">
@@ -46,7 +47,7 @@
           <small class="text-muted">Duration</small>
         </div>
         <div class="col-md-1 text-center">
-          <strong>{{item.arrivalTime}}</strong><br />
+          <strong>{{item.arrivalTime | date : 'HH:MM:SS'}}</strong><br />
           <small class="text-muted">Arrival</small>
         </div>
         <div class="col-md-2 text-center">
@@ -58,7 +59,7 @@
           <small class="text-muted">{{item.availableSeats}} Seats<br />available</small>
         </div>
         <div class="col-md-2 text-end">
-          <button class="btn">VIEW SEATS</button>
+          <button class="btn" [routerLink]="['/booking', item.scheduleId]">Book Seat</button>
         </div>
       </div>
       <div class="text-end mt-2 text-danger">

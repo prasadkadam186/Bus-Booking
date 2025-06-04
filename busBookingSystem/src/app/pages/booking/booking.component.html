@@ -1,1 +1,38 @@
-<p>booking works!</p>
+<div class="card text-center">
+    <div class="card-header">
+        <h5 class="card-title">Book Your Seat</h5>
+    </div>
+    <div class="card-text">
+        <div class="container text-center mt-5">
+            <div class="row seat-layout">
+                <div class="col-12 d-flex justify-content-center driver-row">
+                    <span class="driver-icon">🚌</span>
+                </div>
+                <div class="col-12 d-flex justify-content-center">
+                    <div class="seat-grid">
+                        @for (seatNo of seatArray; track $index) {
+                        <div class="seat-column">
+                            @if(checkIfBookSeat(seatNo)!=-1)
+                            {
+                            <button class="btn btn-secondary seat-button-booked mb-2">
+                                {{seatNo}}
+                            </button>
+                            }
+                            @else {
+                            @if(checkIsSeatSelected(seatNo)!=-1)
+                            {
+                            <button class="btn btn-secondary seat-button-selected mb-2"
+                                (click)="selectSeat(seatNo)">{{seatNo}}</button>
+                            } @else {
+                            <button class="btn btn-secondary seat-button-available mb-2"
+                                (click)="selectSeat(seatNo)">{{seatNo}}</button>
+                            }
+                            }
+                        </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
