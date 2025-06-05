@@ -27,6 +27,7 @@ export class BookingComponent {
     }
   }
 
+  // To get the bus scedule by scheduleID
   getSceduleBus(){
     this.searchService.getBusByScheduledID(this.scheduleID).subscribe((res:any)=>{
       this.scheduleData=res;
@@ -35,22 +36,28 @@ export class BookingComponent {
       }
     })
   }
-  
+
+  // To get the booked seat by scheduleID
   getBookSeats()
   {
     this.searchService.getBookSeatByScheduledID(this.scheduleID).subscribe((res:any)=>{
       this.bookSeatArray=res;
     })
   }
+
+  // To check the seat is booked or not
   checkIfBookSeat(seatNumber:number)
   {
     return this.bookSeatArray.indexOf(seatNumber);
   }
 
+  // To select the seat and pused into the array.
   selectSeat(selectedSeat:number)
   {
     this.userSelectedSeats.push(selectedSeat);
   }
+  
+  // To check the seat is selected or not.
   checkIsSeatSelected(selectedSeat:number)
   {
     return this.userSelectedSeats.indexOf(selectedSeat);

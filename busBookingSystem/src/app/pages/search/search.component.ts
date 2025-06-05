@@ -3,13 +3,13 @@ import { empty, isEmpty, Observable } from 'rxjs';
 import { SearchServiceService } from '../../service/search-service.service';
 import { AsyncPipe, DatePipe } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { NavbarComponent } from '../navbar/navbar.component';
 
 @Component({
   selector: 'app-search',
   standalone: true,
-  imports: [FormsModule, DatePipe, RouterLink, NavbarComponent],
+  imports: [FormsModule, DatePipe, RouterLink],
   templateUrl: './search.component.html',
   styleUrl: './search.component.css'
 })
@@ -25,7 +25,7 @@ export class SearchComponent implements OnInit {
   buslist:any[]=[];
 
   // Constructor
-  constructor(private searchService: SearchServiceService){}
+  constructor(private searchService: SearchServiceService, private router:Router){}
 
   // OnInit Lifecycle event
   ngOnInit(): void {
