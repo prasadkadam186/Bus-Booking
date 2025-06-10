@@ -2,6 +2,7 @@ import { Component, ElementRef, ViewChild, viewChild } from '@angular/core';
 import { SearchComponent } from "../search/search.component";
 import { RouterLink } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { SearchServiceService } from '../../service/search-service.service';
 
 @Component({
   selector: 'app-navbar',
@@ -26,6 +27,7 @@ export class NavbarComponent {
 }
   isLogin : boolean = true;
  @ViewChild('formModel') formModel!: ElementRef;
+ constructor(private serviceObj:SearchServiceService){}
   openModel()
   {
     this.formModel.nativeElement.style.display = 'block';
@@ -45,7 +47,9 @@ export class NavbarComponent {
   } 
   OnRegisterNewUser()
   {
-    
+    this.serviceObj.newUserRegister((res:any)=>{
+      
+    })
   }
   onLogin()
   {
