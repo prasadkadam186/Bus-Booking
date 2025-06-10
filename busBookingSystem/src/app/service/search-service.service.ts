@@ -27,4 +27,12 @@ export class SearchServiceService {
   {
     return this.http.get(this.apiUrl+"getBookedSeats?shceduleId="+scheduleID);
   }
+  newUserRegister(newUser:any)
+  {
+    return this.http.post(this.apiUrl+"AddNewUser",newUser);
+  }
+  userLogin(obj:any)
+  {
+    return this.http.post(this.apiUrl+"login",obj);
+  }
 }

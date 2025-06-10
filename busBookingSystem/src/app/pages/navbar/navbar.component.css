@@ -67,3 +67,32 @@
     border: none;
     background-color: #d3d3d3;
 }
+
+.model {
+  /* display: none; */
+  margin-left: 24%;
+  width: 50%;
+  height: 100%;
+  z-index: 100000;
+}
+
+
+.model-dialog {
+  background: white;
+  padding: 2rem;
+  border-radius: 10px;
+  width: 400px;
+  margin: auto;
+  margin-top: 10%;
+}
+.actionButtons{
+  flex-wrap: nowrap;
+  justify-content: space-between;
+}
+.actionButtons button{
+  margin-left: 10%;
+  width: 30%;
+  margin-right: 10%;
+}
+
+
