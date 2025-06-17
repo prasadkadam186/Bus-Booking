@@ -1,9 +1,12 @@
-.text-center{
+/* .text-center{
      padding: 4% 4% 4% 4%;
-}.seat-layout {
+} */
+.seat-layout {
   margin-top: 30px;
 }
-
+.card-text{
+  display: flex;
+  justify-content: space-between;}
 .driver-row {
   margin-bottom: 20px;
 }
@@ -25,10 +28,8 @@
 .seat-column button{
     width: 46px;
     height: 40px;
-    /* border: none; */
     color: black;
     font-weight: bold;
-    /* border-radius: 4px; */
 }
 
 .seat-button-booked {

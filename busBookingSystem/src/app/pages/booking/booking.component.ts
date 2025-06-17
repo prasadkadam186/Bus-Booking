@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, numberAttribute } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { SearchServiceService } from '../../service/search-service.service';
 import { NavbarComponent } from '../navbar/navbar.component';
@@ -16,7 +16,7 @@ export class BookingComponent {
   scheduleData:any;
   seatArray:number []=[];
   bookSeatArray:number []=[];
-  userSelectedSeats:number[]=[];
+  userSelectedSeats:any[]=[];
   constructor(private activateRouteID:ActivatedRoute, private searchService: SearchServiceService)
   {
     this.activateRouteID.params.subscribe((res:any)=>{this.scheduleID=res.id});
@@ -54,7 +54,16 @@ export class BookingComponent {
   // To select the seat and pused into the array.
   selectSeat(selectedSeat:number)
   {
-    this.userSelectedSeats.push(selectedSeat);
+    const obj={
+      "passengerId":0,
+      "bookingId": 0,
+      "passengerName": "string",
+      "age": 0,
+      "gender": "string",
+      "seatNo": 0
+    }
+    obj.seatNo=selectedSeat;
+    this.userSelectedSeats.push(obj);
   }
   
   // To check the seat is selected or not.

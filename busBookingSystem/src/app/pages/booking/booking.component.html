@@ -3,7 +3,7 @@
         <h5 class="card-title">Book Your Seat</h5>
     </div>
     <div class="card-text">
-        <div class="container text-center mt-5">
+        <div class="container text-center mt-5" >
             <div class="row seat-layout">
                 <div class="col-12 d-flex justify-content-center driver-row">
                     <span class="driver-icon">🚌</span>
@@ -32,6 +32,31 @@
                         }
                     </div>
                 </div>
+            </div>
+        </div>
+        <div class="container text-center mt-5">
+            <div class="row seat-layout">
+                @for (item of userSelectedSeats; track $index) {
+                    <div class="col-3">
+                    <label for="text" >Passenger Name</label>
+                    <input type="text" name="name" class="form-control">
+                </div>
+                <div class="col-3">
+                    <label for="text" >Age</label>
+                    <input type="text" name="age" class="form-control">
+                </div>
+                <div class="col-3">
+                    <label for="text" >Full Name</label>
+                    <select name="gender" id="gender" class="form-control">
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                    </select>
+                </div>
+                <div class="col-3">
+                    <label for="text" >Seat No</label>
+                    <input disabled type="text" name="name" class="form-control">
+                </div>
+                }
             </div>
         </div>
     </div>
