@@ -6,113 +6,22 @@
       <span class="trusted-text">Trusted by <strong>5 Crore+</strong> Travellers</span>
     </div>
     <div class="nav-links d-none d-md-flex">
-      <a class="nav-link" [routerLink]="['/search',]">Home</a>
-      <a class="nav-link" href="#">Need Help?</a>
-      <span class="nav-link login-link">
-        <button >Login/SignUp</button>
+      @if(loggedInUserData){
+        <a class="nav-link" [routerLink]="['/search',]">Home</a>
+      }
+      <a class="nav-link" href="https://www.google.com/">Need Help?</a>
+      @if(loggedInUserData)
+      {
+        <span class="nav-link login-link">{{loggedInUserData.fullName}}</span>
+        <span class="nav-link login-link">
+        <button (click)="onLogout()">Logout</button>
       </span>
+      }
+      @else {
+        <span class="nav-link login-link">
+        <button (click)="goToLogin()">Login/SignUp</button>
+      </span>
+      }
     </div>
   </div>
 </nav>
-<div #formModel class="model" id="formModel">
-  <div class="model-dialog">
-    <div class="model-header">
-      @if(isLogin)
-      {
-        <h3>SignIn</h3>
-      }
-      @else {
-        <h3>Register</h3>
-      }
-    </div>
-  </div>
-  <div>
-    @if(isLogin)
-    {
-    <form>
-      <!-- Email input -->
-      <div data-mdb-input-init class="form-outline mb-4">
-        <label class="form-label" for="form2Example1">Email address</label>
-        <input type="email" id="userEmail" class="form-control" />
-      </div>
-      <!-- Password input -->
-      <div data-mdb-input-init class="form-outline mb-4">
-        <label class="form-label" for="form2Example2">Password</label>
-        <input type="password" id="userPassword" class="form-control" />
-      </div>
-
-      <!-- <div class="row mb-4">
-        <div class="col d-flex justify-content-center">
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="form2Example31" checked />
-            <label class="form-check-label" for="form2Example31"> Remember me </label>
-          </div>
-        </div>
-
-        <div class="col">
-          <a href="#!">Forgot password?</a>
-        </div>
-      </div> -->
-
-      <!-- Submit button -->
-      <div class="row actionButtons">
-        <button type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-block mb-4">Sign
-          in</button>
-
-        <button type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-secondary btn-block mb-4"
-          (click)="closeModel()">Cancel</button>
-      </div>
-
-
-      <!-- Register buttons -->
-      <div class="text-center">
-        <button class="btn btn-link" type="button" (click)="ShowRegisterpage()"> Register
-          <!-- <p>Not a member? <a href="#!">Register</a></p> -->
-        </button>
-      </div>
-    </form>
-    }
-    @else
-    {
-    <form>
-       <div data-mdb-input-init class="form-outline mb-4">
-        <label class="form-label" for="form2Example1">userName</label>
-        <input type="text" name="fullName" [(ngModel)]="newUserObj.fullName" id="fullName" class="form-control" />
-      </div>
-
-       <!-- userName input -->
-      <div data-mdb-input-init class="form-outline mb-4">
-        <label class="form-label" for="form2Example1">userName</label>
-        <input type="text" name="userName" [(ngModel)]="newUserObj.userName" id="userName" class="form-control" />
-      </div>
-
-      <!-- Email input -->
-      <div data-mdb-input-init class="form-outline mb-4">
-        <label class="form-label" for="form2Example1">Email address</label>
-        <input type="email" name="emailId" [(ngModel)]="newUserObj.emailId" id="NewUserEmail" class="form-control" />
-      </div>
-
-      <!-- Password input -->
-      <div data-mdb-input-init class="form-outline mb-4">
-         <label class="form-label" for="form2Example2">Password</label>
-        <input type="password" name="password" [(ngModel)]="newUserObj.password" id="NewUserPassword" class="form-control" />
-      </div>
-      <!-- Submit button -->
-      <div class="row actionButtons">
-        <button type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-success btn-block mb-4" OnRegisterNewUser()>Register</button>
-
-        <button type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-secondary btn-block mb-4"(click)="closeModel()">Cancel</button>
-      </div>
-
-
-      <!-- Register buttons -->
-      <div class="text-center">
-        <button class="btn btn-link" type="button" (click)="Showloginpage()">
-          Already Register
-        </button>
-      </div>
-    </form>
-    }
-
-  </div>
-</div>

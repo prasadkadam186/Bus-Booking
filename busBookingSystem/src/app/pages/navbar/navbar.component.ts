@@ -1,8 +1,7 @@
-import { Component, ElementRef, ViewChild, viewChild } from '@angular/core';
-import { SearchComponent } from "../search/search.component";
-import { RouterLink } from '@angular/router';
+import { Component} from '@angular/core';
+import { Router, RouterLink } from '@angular/router';
 import { FormsModule } from '@angular/forms';
-import { SearchServiceService } from '../../service/search-service.service';
+import { AuthServiceService } from '../../service/auth-service.service';
 
 @Component({
   selector: 'app-navbar',
@@ -12,48 +11,20 @@ import { SearchServiceService } from '../../service/search-service.service';
   styleUrl: './navbar.component.css'
 })
 export class NavbarComponent {
-
-  newUserObj:any={
-  "userId": 0,
-  "userName": "",
-  "emailId": "",
-  "fullName": "",
-  "role": "User",
-  "createdDate": new Date(),
-  "password": "",
-  "projectName": "",
-  "refreshToken": "",
-  "refreshTokenExpiryTime": new Date()
-}
-  isLogin : boolean = true;
- @ViewChild('formModel') formModel!: ElementRef;
- constructor(private serviceObj:SearchServiceService){}
-  openModel()
-  {
-    this.formModel.nativeElement.style.display = 'block';
+  loggedInUserData: any
+  constructor(private route: Router,private authService: AuthServiceService) {
+    this.authService.user$.subscribe(user => {
+      this.loggedInUserData = user;
+    });
   }
-  closeModel()
-  {
-     this.formModel.nativeElement.style.display = 'none';
+  // To go to the login page
+  goToLogin() {
+    this.route.navigateByUrl("/login")
   }
-
-  Showloginpage()
-  {
-    this.isLogin=true;
-  }
-  ShowRegisterpage()
-  {
-    this.isLogin=false;
-  } 
-  OnRegisterNewUser()
-  {
-    this.serviceObj.newUserRegister((res:any)=>{
-      
-    })
-  }
-  onLogin()
-  {
-
+  // To logout the current user and clear the local storage 
+  onLogout() {
+    this.authService.logout();
+    this.route.navigateByUrl("/login")
   }
 }
 
