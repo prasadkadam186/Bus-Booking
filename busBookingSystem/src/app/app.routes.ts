@@ -7,7 +7,7 @@ import { LoginSignUpComponent } from './pages/login-sign-up/login-sign-up.compon
 export const routes: Routes = [
     {
         path: '',
-        redirectTo : 'search',
+        redirectTo : 'login',
         pathMatch : 'full'
     },
     {
@@ -21,9 +21,5 @@ export const routes: Routes = [
     {
         path : "login",
         component : LoginSignUpComponent
-    },
-    {
-        path:'',
-        component:LoginSignUpComponent
     }
 ];
