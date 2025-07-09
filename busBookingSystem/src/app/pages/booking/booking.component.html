@@ -3,7 +3,7 @@
         <h5 class="card-title">Book Your Seat</h5>
     </div>
     <div class="card-text">
-        <div class="container text-center mt-5" >
+        <div class="container text-center mt-5">
             <div class="row seat-layout">
                 <div class="col-12 d-flex justify-content-center driver-row">
                     <span class="driver-icon">🚌</span>
@@ -14,15 +14,14 @@
                         <div class="seat-column">
                             @if(checkIfBookSeat(seatNo)!=-1)
                             {
-                            <button class="btn btn-secondary seat-button-booked mb-2">
+                            <button class="btn btn-secondary seat-button-booked mb-2" disabled>
                                 {{seatNo}}
                             </button>
                             }
                             @else {
                             @if(checkIsSeatSelected(seatNo)!=-1)
                             {
-                            <button class="btn btn-secondary seat-button-selected mb-2"
-                                (click)="selectSeat(seatNo)">{{seatNo}}</button>
+                            <button class="btn btn-secondary seat-button-selected mb-2" disabled>{{seatNo}}</button>
                             } @else {
                             <button class="btn btn-secondary seat-button-available mb-2"
                                 (click)="selectSeat(seatNo)">{{seatNo}}</button>
@@ -37,26 +36,29 @@
         <div class="container text-center mt-5">
             <div class="row seat-layout">
                 @for (item of userSelectedSeats; track $index) {
-                    <div class="col-3">
-                    <label for="text" >Passenger Name</label>
-                    <input type="text" name="name" class="form-control">
+                <div class="col-3">
+                    <label>Passenger Name</label>
+                    <input placeholder="Passenger Name" type="text" name="name" class="form-control" [(ngModel)]="item.passengerName">
                 </div>
                 <div class="col-3">
-                    <label for="text" >Age</label>
-                    <input type="text" name="age" class="form-control">
+                    <label>Age</label>
+                    <input type="text" name="age" class="form-control" [(ngModel)]="item.age">
                 </div>
                 <div class="col-3">
-                    <label for="text" >Full Name</label>
-                    <select name="gender" id="gender" class="form-control">
+                    <label>Gendar</label>
+                    <select name="gender" class="form-control" [(ngModel)]="item.gender">
                         <option value="Male">Male</option>
                         <option value="Female">Female</option>
                     </select>
                 </div>
                 <div class="col-3">
-                    <label for="text" >Seat No</label>
-                    <input disabled type="text" name="name" class="form-control">
+                    <label>Seat No</label>
+                    <input disabled type="text" name="name" [(ngModel)]="item.seatNo" class="form-control">
                 </div>
                 }
+            </div>
+            <div class="actionButton">
+                <button type="button" class="btn btn-success" (click)="bookSeat()">Book Now</button>
             </div>
         </div>
     </div>

@@ -13,15 +13,16 @@
   <div>
     @if(isLogin)
     {
+      <!-- Login Form -->
     <form>
       <!-- Email input -->
       <div data-mdb-input-init class="form-outline mb-4">
-        <label class="form-label" for="form2Example1">UserName</label>
+        <label class="form-label" for="userName">UserName</label>
         <input type="email"  name="userName" [(ngModel)]="newUserObj.userName" id="userName" class="form-control" />
       </div>
       <!-- Password input -->
       <div data-mdb-input-init class="form-outline mb-4">
-        <label class="form-label" for="form2Example2">Password</label>
+        <label class="form-label" for="NewUserPassword">Password</label>
         <input type="password" name="password" [(ngModel)]="newUserObj.password" id="NewUserPassword" class="form-control" />
       </div>
       <!-- Submit button -->
@@ -46,25 +47,25 @@
     {
     <form>
        <div data-mdb-input-init class="form-outline mb-4">
-        <label class="form-label" for="form2Example1">FullName</label>
+        <label class="form-label" for="fullName">FullName</label>
         <input type="text" name="fullName" [(ngModel)]="newUserObj.fullName" id="fullName" class="form-control" />
       </div>
 
        <!-- userName input -->
       <div data-mdb-input-init class="form-outline mb-4">
-        <label class="form-label" for="form2Example1">UserName</label>
+        <label class="form-label" for="userName">UserName</label>
         <input type="text" name="userName" [(ngModel)]="newUserObj.userName" id="userName" class="form-control" />
       </div>
 
       <!-- Email input -->
       <div data-mdb-input-init class="form-outline mb-4">
-        <label class="form-label" for="form2Example1">Email address</label>
+        <label class="form-label" for="NewUserEmail">Email address</label>
         <input type="email" name="emailId" [(ngModel)]="newUserObj.emailId" id="NewUserEmail" class="form-control" />
       </div>
 
       <!-- Password input -->
       <div data-mdb-input-init class="form-outline mb-4">
-         <label class="form-label" for="form2Example2">Password</label>
+         <label class="form-label" for="NewUserPassword">Password</label>
         <input type="password" name="password" [(ngModel)]="newUserObj.password" id="NewUserPassword" class="form-control" />
       </div>
       <!-- Submit button -->
