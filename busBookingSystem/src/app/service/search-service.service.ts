@@ -8,7 +8,6 @@ import { Observable } from 'rxjs';
 export class SearchServiceService {
   apiUrl:string="https://api.freeprojectapi.com/api/BusBooking/"
   constructor(private http:HttpClient) { }
-  
   // To get All the locations
    getAllLocation(){
     return this.http.get(this.apiUrl+"GetBusLocations");
@@ -34,5 +33,8 @@ export class SearchServiceService {
   userLogin(obj:any)
   {
     return this.http.post(this.apiUrl+"login",obj);
+  }
+  bookSelectedSeat(obj:any){
+    return this.http.post(this.apiUrl+"PostBusBooking",obj)
   }
 }

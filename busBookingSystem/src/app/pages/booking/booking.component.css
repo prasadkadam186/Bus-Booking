@@ -1,11 +1,7 @@
-/* .text-center{
-     padding: 4% 4% 4% 4%;
-} */
 .seat-layout {
   margin-top: 30px;
 }
 .card-text{
-  display: flex;
   justify-content: space-between;}
 .driver-row {
   margin-bottom: 20px;
@@ -38,7 +34,11 @@
 }
 .seat-button-selected {
   background-color: #ef6c26;
+  color: #ffffff;
 }
 .seat-button-available {
   background-color: #ffffff; 
+}
+.actionButton{
+  margin: 2%;
 }
